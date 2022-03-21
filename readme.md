@@ -1,4 +1,5 @@
-This is a final project for Topological Data Analysis.
+Final project for MATH-478 (Topological Data Analysis). The objective is to create a dataset and
+use Ripser to generate a persistent homology of that dataset.
 
 ## Notes
 ### 03-05-2021:
