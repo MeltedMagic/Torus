@@ -1,0 +1,126 @@
+\documentclass[letterpaper, 12pt]{report}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Final Project using Ripser}
+\author{Manu Samala}
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+
+\begin{document}
+
+	\section{Objective}
+	The objective is to calculate the barcode for $PH_1$ of the torus in 
+	$\mathbb{R}^4$, or more commonly referred to as the Clifford Torus.
+
+	\section{Methodology}
+	To calculate the persistence homology of the $\mathbb{R}^4$, we are to
+	utilize software called Ripser.py that calculates the Vietoris-Rips barcodes.
+	We shall utilize python with numpy to generate 30 unit vectors with
+	varying \\ angle values $\theta$ and $\phi$ with the condition shown in
+	eq. 1. Then we shall utilize Ripser.py to calculate
+	the persistent homology of the dataset.
+	\begin{equation}
+		\mathbb{S}^1 \times \mathbb{S}^1 = { (cos \theta, sin \theta, cos \phi,
+		sin \phi \quad | \quad 0 \leq \theta \leq 2\pi, 0 \leq \phi \leq 2 \pi) }
+	\end{equation}
+
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=0.65\linewidth]{./assets/circle1.png}
+	  \caption{15 randomized datapoints on $\mathbb{R}^2$ as a function of $\theta$.}
+	  \label{fig:cir1}
+	\end{figure}
+	\newpage
+
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=0.65\linewidth]{./assets/circle2.png}
+	  \caption{15 randomized datapoints on $\mathbb{R}^2$ as a function of $\phi$.}
+	  \label{fig:cir2}
+	\end{figure}
+
+	\begin{figure}
+		\includegraphics[width=1.2\linewidth]{./assets/gen.png}
+		\caption{gen.py: Generate 30 datapoints in $\mathbb{R}^4$ with varying
+		angles where 15 samples are generated for each $\mathbb{R}^2$ space. T
+		is a numpy array where rows 0 and 1 are one $\mathbb{R}^2$ space and 
+		rows 2 and 3 are another $\mathbb{R}^2$ space.
+		The output is a chart and datafile "torus.csv".}
+		\label{fig:code1}
+	\end{figure}
+
+	\begin{figure}
+		\includegraphics[width=1.2\linewidth]{./assets/persist.png}
+		\caption{persist.py: Take datafile from gen.py and calculate the $0^{th}$ 
+			and $1^{st}$ persistent homology of an $\mathbb{R}^4$ torus. 
+			The output is a persistence diagram as seen in Fig. 5 through
+			Fig. 11.}
+		\label{fig:code2}
+	\end{figure}
+	
+	\newpage
+	\section{Results}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=0.85\linewidth]{./assets/rad0-5.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=0.5.}
+	  \label{fig:fig1}
+	\end{figure}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad0-75.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=0.75.}
+	  \label{fig:fig2}
+	\end{figure}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad0-78.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=0.78.}
+	  \label{fig:fig3}
+	\end{figure}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad0-85.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=0.85.}
+	  \label{fig:fig4}
+	\end{figure}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad0-95.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=0.95.}
+	  \label{fig:fig5}
+	\end{figure}
+
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad1.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=1.0.}
+	  \label{fig:fig6}
+	\end{figure}
+	
+	\begin{figure}[ht]
+	  \centering
+	  \includegraphics[width=1.05\linewidth]{./assets/rad1-1.png}
+	  \caption{$0^{th}$ and $1^{st}$ persistent homology with radius=1.1.}
+	  \label{fig:fig7}
+	\end{figure}
+	
+	
+	\clearpage
+
+	
+	\section{Analysis}
+	We have estimated the dimension of the 1st persistent homology to be equal to 2. As seen in Fig. 5 and Fig. 6 with a radius less than 0.78, none of the points are connected, and we can not make any conclusions about the topology of the dataset besides the fact that they are disconnected. In Fig. 7 through Fig. 8, we detect a little bit of noise in this dataset. Most likely, this is from the lack of points in this dataset since one of the best ways to reduce noise is to greatly increase the amount of points tenfold. In Fig. 9 and Fig. 10 with a radius greater than or equal to 0.95, we find the persistent homology of the dataset where we have estimated the dimension of the 1st persistent homology to be equal to 2. Finally at Fig. 11, the distance between points is too high with a radius of 1.1 and any features detected from this point is trivial. 
+
+\end{document}
